@@ -52,4 +52,4 @@ FAO AQUASTAT Dissemination System — SDG indicators 6.4.1 (Water Use Efficiency
 
 ## Author
 
-Rangel Hristov — Junior Analyst, Destination Data
+Rangel Hristov
