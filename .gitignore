@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# AI / Assistant traces — keep repo clean
+.claude/
+.claude.json
+.claude.md
+CLAUDE.md
+.cursorrules
+.cursor/
+.copilot/
+.github/copilot/
+.aider*
+.continue/
