@@ -99,7 +99,46 @@ def load_and_clean(csv_path, log=_default_log):
     else:
         log("--> No missing values detected. Data is complete.")
 
-    df = df[df["IsAggregate"] == False].copy()  # noqa: E712 — pandas idiom
+    if "IsAggregate" in df.columns:
+        df = df[df["IsAggregate"] == False].copy()  # noqa: E712 — pandas idiom
+    else:
+        log("--> 'IsAggregate' column missing. Filtering known aggregate regions by name.")
+        known_aggregates = {
+            "World",
+            "Africa",
+            "Americas",
+            "Asia",
+            "Europe",
+            "Oceania",
+            "Northern Africa",
+            "Sub-Saharan Africa",
+            "Eastern Africa",
+            "Middle Africa",
+            "Southern Africa",
+            "Western Africa",
+            "Northern America",
+            "Latin America and the Caribbean",
+            "Caribbean",
+            "Central America",
+            "South America",
+            "Central Asia",
+            "Eastern Asia",
+            "South-eastern Asia",
+            "Southern Asia",
+            "Western Asia",
+            "Eastern Europe",
+            "Northern Europe",
+            "Southern Europe",
+            "Western Europe",
+            "Australia and New Zealand",
+            "Melanesia",
+            "Micronesia",
+            "Polynesia",
+            "Least Developed Countries",
+            "Land Locked Developing Countries",
+            "Small Island Developing States",
+        }
+        df = df[~df["Area"].isin(known_aggregates)].copy()
     log(
         f"After removing aggregate regions: {df.shape[0]} rows, "
         f"{df['Area'].nunique()} unique countries"
